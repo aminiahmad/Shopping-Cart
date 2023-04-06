@@ -1,5 +1,5 @@
-import {createContext , useContext , ReactNode, useState} from "react";
-
+import {createContext , useContext , ReactNode, useState } from "react";
+import Cart from "../components/Cart";
 type providerContextProps={
     children: ReactNode
 }
@@ -76,6 +76,12 @@ export function CartProvider({ children }: providerContextProps){
             })
 
         }
-        return <cartContext.Provider value={{getItemQty , addItem , subItem , removeItem , cartQty , cartItems , openCart,closeCart}}>{children}</cartContext.Provider>
+        return(
+        <cartContext.Provider 
+            value={{getItemQty , addItem , subItem , removeItem , cartQty , cartItems , openCart,closeCart}}>
+            <Cart isOpen={isOpen}/>       
+            {children}
+        </cartContext.Provider>
+        )
 }
 
