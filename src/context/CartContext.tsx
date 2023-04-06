@@ -1,5 +1,5 @@
-import {createContext , useContext , ReactNode, useState } from "react";
-import Cart from "../components/Cart";
+import {createContext , useContext , ReactNode, useState} from "react";
+import Cart from "../components/Cart"
 type providerContextProps={
     children: ReactNode
 }
@@ -55,7 +55,7 @@ export function CartProvider({ children }: providerContextProps){
             setCartItems((currItems)=>{
                 if (currItems.find((item)=>item.id==id)?.qty==1)
                 {
-                return currItems.filter((item)=>{item.id !== id})
+                return currItems.filter((item)=>item.id !== id)
                 }
                 else
                 {
@@ -72,15 +72,14 @@ export function CartProvider({ children }: providerContextProps){
         }
         function removeItem(id: number){
             setCartItems((currItems)=>{
-              return currItems.filter((item)=>{item.id !==id})
+              return currItems.filter((item)=>item.id !==id)
             })
 
         }
-        return(
-        <cartContext.Provider 
-            value={{getItemQty , addItem , subItem , removeItem , cartQty , cartItems , openCart,closeCart}}>
-            <Cart isOpen={isOpen}/>       
-            {children}
+        return ( 
+        <cartContext.Provider value={{getItemQty , addItem , subItem , removeItem , cartQty , cartItems , openCart,closeCart}}>
+            <Cart isOpen={isOpen} />
+        {children}
         </cartContext.Provider>
         )
 }

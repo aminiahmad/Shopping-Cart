@@ -1,36 +1,47 @@
-import productItems from  "../data/products.json"
-import {useCartContext} from "../context/CartContext"
-import {Stack , Button} from "react-bootstrap"
-type cartItemProps={
-    id: number
-    qty: number
+import { Stack, Button } from 'react-bootstrap'
+
+import { useCartContext } from '../context/CartContext'
+
+import productItems from '../data/products.json'
+
+type CartItemProps = {
+  id: number
+  qty: number
 }
 
-function CartItem({id , qty}: cartItemProps){
-    const {removeItem}= useCartContext()
-    const product= productItems.find((item)=>item.id===id)
+function CartItem({ id, qty }: CartItemProps) {
+  const { removeItem } = useCartContext()
 
-    if(product==null) return null
+  const product = productItems.find((item) => item.id === id)
 
-    return (
-        <Stack direction="horizontal" gap={2}>
-            <img
-                src={product.imgUrl}
-                style={{width:"125px" , height:"75px" , objectFit:"contain"}}
-            />
-            <div className="text-dark">
-                <div>
-                    {product.title} {` : ${qty} `}
-                    
-                </div>
-                <div>
-                    {product.price * qty}
-                </div>
-                <Button onClick={()=>removeItem(product.id)}>remove</Button>
-            </div>
-        </Stack>
-        
-    )
+  if (product == null) return null
 
+  return (
+    <Stack direction='horizontal' gap={2} className='d-flex align-items-center'>
+      <img
+        src={product.imgUrl}
+        style={{ width: '125px', height: '75px', objectFit: 'contain' }}
+      />
+      <div className='me-auto text-dark'>
+        <div>
+          {product.title}{' '}
+          {qty > 1 && (
+            <span className='text-muted' style={{ fontSize: '.65rem' }}>
+              {qty}
+            </span>
+          )}
+        </div>
+        <div>{product.price * qty}</div>
+        <Button
+          variant='outline-dark'
+          size='sm'
+          onClick={() => removeItem(product.id)}
+        >
+          remove
+        </Button>
+      </div>
+    </Stack>
+  )
 }
+
 export default CartItem
