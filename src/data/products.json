@@ -1,0 +1,20 @@
+[
+    {
+      "id":1,
+      "title":"ساعت",
+      "price":599,
+      "imgUrl":"images/watch.jpg"
+    },
+    {
+        "id":2,
+        "title":"عینک",
+        "price":399,
+        "imgUrl":"images/glasses.jpg"
+    },
+    {
+        "id":3,
+        "title":"دوربین",
+        "price":991,
+        "imgUrl":"images/camera.jpg"
+    }
+]
