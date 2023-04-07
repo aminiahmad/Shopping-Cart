@@ -37,7 +37,6 @@ function Product({id,title,price,imgUrl}:productProps){
                 </div> 
                         )}
                 
-
             </Card.Body>
         </Card>
     )
